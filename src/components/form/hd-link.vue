@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-    <h2 class="bg-red-500 text-white">首页 - home.vue</h2>
+    <a href="#" class="hover:text-violet-600">网站首页</a>
 </template>
 
 <style scoped lang="scss"></style>
