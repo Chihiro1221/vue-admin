@@ -1,21 +1,41 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
-const form = reactive({
-	account: '',
-	password: '',
+import user from '@/apis/user'
+import v from '@/plugins/validate'
+import { store } from '@/utils'
+
+const { Field, Form, ErrorMessage } = v
+const schema = v.yup.object({
+	account: v.yup.string().required().email().label('账号'),
+	password: v.yup.string().required().min(3).label('密码'),
 })
+const onSubmit = async (values: any) => {
+	const {
+		result: { token },
+	} = await user.login(values)
+	store.set('token', {
+		expire: 3000,
+		token,
+	})
+}
 </script>
 
 <template>
-	<div class="bg-slate-300 h-screen flex justify-center items-center px-6 md:px-0">
+	<Form @submit="onSubmit" :validation-schema="schema" #default="{ errors }">
 		<div class="w-[720px] bg-white rounded-md shadow-md grid md:grid-cols-2 -translate-y-6">
-			<div class="p-6 text-center text-gray-700 text-lg">
-				<div>账号登陆</div>
-				<div class="mt-6">
-					<hdInput v-model="form.account" placeholder="请输入邮箱或手机号" />
-					<hdInput v-model="form.password" placeholder="请输入登录密码" class="mt-3" />
+			<div class="p-6 text-center text-gray-700 text-lg flex flex-col justify-between">
+				<div>
+					<div>账号登陆</div>
+					<div class="mt-6">
+						<Field class="hd-input" value="2213595911@qq.com" label="账号" name="account" placeholder="请输入邮箱或手机号" />
+						<div v-if="errors.account" class="hd-error">请输入邮箱或手机号</div>
+						<Field class="hd-input mt-3" value="admin888" label="密码" name="password" placeholder=" 请输入登录密码" />
+						<ErrorMessage class="hd-error" name="password" />
+					</div>
+					<hdButton class="mt-5" />
+					<div class="mt-3 flex justify-center">
+						<i class="fab fa-weixin bg-green-600 text-white rounded-full p-[2px] cursor-pointer"></i>
+					</div>
 				</div>
-				<hdButton class="mt-5" />
 				<div class="flex mt-6 text-xs text-gray-700 justify-center gap-2">
 					<hdLink />
 					<hdLink />
@@ -23,11 +43,15 @@ const form = reactive({
 					<hdLink />
 				</div>
 			</div>
-			<div class="hidden md:block">
-				<img src="/images/login.jpg" alt="" class="h-[400px] w-full object-cover" />
+			<div class="hidden md:block relative">
+				<img src="/images/login.jpg" alt="" class="h-[300px] h-full w-full object-cover absolute" />
 			</div>
 		</div>
-	</div>
+	</Form>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+form {
+	@apply bg-slate-300 h-screen flex justify-center items-center px-6 md:px-0;
+}
+</style>

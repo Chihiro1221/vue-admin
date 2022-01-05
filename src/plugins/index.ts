@@ -1,6 +1,7 @@
 import { App } from 'vue'
 import { setupTailwindcss } from './tailwindcss'
-import { changeHump } from '../utils/Hump'
+// 自己封装的转驼峰函数
+// import { changeHump } from '../utils/Hump'
 import _ from 'lodash'
 export function setupPlugins(app: App) {
 	autoRegisterComponent(app)

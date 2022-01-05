@@ -1,4 +1,4 @@
-export function changeHump(name: string) {
+export default function changeHump(name: string) {
 	name = name.replace(/(?<=-)\w/g, search => {
 		return search.toUpperCase()
 	})
