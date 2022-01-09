@@ -2,8 +2,10 @@
 import user from '@/apis/user'
 import v from '@/plugins/validate'
 import { store } from '@/utils'
+import { useRouter } from 'vue-router'
 
 const { Field, Form, ErrorMessage } = v
+const router = useRouter()
 const schema = v.yup.object({
 	account: v.yup.string().required().email().label('账号'),
 	password: v.yup.string().required().min(3).label('密码'),
@@ -16,6 +18,12 @@ const onSubmit = async (values: any) => {
 		expire: 3000,
 		token,
 	})
+	router.push({ name: 'home' })
+}
+</script>
+<script lang="ts">
+export default {
+	route: { meta: { guest: true } },
 }
 </script>
 
@@ -26,14 +34,20 @@ const onSubmit = async (values: any) => {
 				<div>
 					<div>账号登陆</div>
 					<div class="mt-6">
-						<Field class="hd-input" value="2213595911@qq.com" label="账号" name="account" placeholder="请输入邮箱或手机号" />
+						<Field
+							class="hd-input"
+							value="2213595911@qq.com"
+							label="账号"
+							name="account"
+							placeholder="请输入邮箱或手机号"
+						/>
 						<div v-if="errors.account" class="hd-error">请输入邮箱或手机号</div>
 						<Field class="hd-input mt-3" value="admin888" label="密码" name="password" placeholder=" 请输入登录密码" />
 						<ErrorMessage class="hd-error" name="password" />
 					</div>
-					<hdButton class="mt-5" />
-					<div class="mt-3 flex justify-center">
-						<i class="fab fa-weixin bg-green-600 text-white rounded-full p-[2px] cursor-pointer"></i>
+					<hdButton class="mt-5 w-full" />
+					<div class="mt-3 flex justify-center items-center">
+						<i class="fab fa-weixin bg-green-600 text-white p-1 rounded-full box-border cursor-pointer"></i>
 					</div>
 				</div>
 				<div class="flex mt-6 text-xs text-gray-700 justify-center gap-2">

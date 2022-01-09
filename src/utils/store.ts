@@ -1,5 +1,6 @@
 interface IData {
 	expire?: number
+	token: string
 	[key: string]: any
 }
 export default {
