@@ -1,12 +1,15 @@
 import { App } from 'vue'
-import { setupTailwindcss } from './tailwindcss'
+import setupTailwindcss from './tailwindcss'
+import setupElementPlus from './elementui'
+import setupPinia from './pinia'
 // 自己封装的转驼峰函数
 // import { changeHump } from '../utils/Hump'
 import _ from 'lodash'
 export function setupPlugins(app: App) {
 	autoRegisterComponent(app)
-
 	setupTailwindcss()
+	setupElementPlus(app)
+	setupPinia(app)
 }
 
 // 自动注册全局组件

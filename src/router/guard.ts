@@ -1,20 +1,30 @@
 import { RouteLocationNormalized, Router } from 'vue-router'
 import { store } from '@/utils'
+import { user } from '@/store/user'
 
 class Guard {
 	constructor(private router: Router) {}
 	public run() {
-		this.router.beforeEach((to, from) => {
-			let token = store.get('token')?.token
-			if (!this.isAuthRoute(to, token)) return { name: 'auth.login' }
-			if (this.isGuestRoute(to, token)) return from
-		})
+		this.router.beforeEach(this.beforeEach.bind(this))
 	}
-	private isGuestRoute(route: RouteLocationNormalized, token: string | undefined): boolean {
-		return Boolean(route.meta.guest && token)
+	beforeEach(to: RouteLocationNormalized, from: RouteLocationNormalized) {
+		if (!this.isAuthRoute(to)) return { name: 'login' }
+		if (this.isGuestRoute(to)) return from
+		this.getUserInfo()
 	}
-	private isAuthRoute(route: RouteLocationNormalized, token: string | undefined): boolean {
-		return Boolean(!route.meta.auth || (route.meta.auth && token))
+	token(): string | undefined {
+		return store.get('token')?.token
+	}
+	private async getUserInfo() {
+		user().getUserInfo()
+	}
+	// 游客
+	private isGuestRoute(route: RouteLocationNormalized): boolean {
+		return Boolean(route.meta.guest && this.token())
+	}
+	// 登录
+	private isAuthRoute(route: RouteLocationNormalized): boolean {
+		return Boolean(!route.meta.auth || (route.meta.auth && this.token()))
 	}
 }
 export default (router: Router) => {

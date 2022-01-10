@@ -10,7 +10,7 @@ export interface LoginInterface {
 class UserApi {
 	info() {
 		return http.request<User>({
-			url: 'get',
+			url: 'user/info',
 		})
 	}
 	login(data: any) {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import user from '@/apis/user'
+import userApi from '@/apis/userApi'
 import v from '@/plugins/validate'
 import { store } from '@/utils'
 import { useRouter } from 'vue-router'
@@ -13,7 +13,7 @@ const schema = v.yup.object({
 const onSubmit = async (values: any) => {
 	const {
 		result: { token },
-	} = await user.login(values)
+	} = await userApi.login(values)
 	store.set('token', {
 		expire: 3000,
 		token,
@@ -34,13 +34,7 @@ export default {
 				<div>
 					<div>账号登陆</div>
 					<div class="mt-6">
-						<Field
-							class="hd-input"
-							value="2213595911@qq.com"
-							label="账号"
-							name="account"
-							placeholder="请输入邮箱或手机号"
-						/>
+						<Field class="hd-input" value="2213595911@qq.com" label="账号" name="account" placeholder="请输入邮箱或手机号" />
 						<div v-if="errors.account" class="hd-error">请输入邮箱或手机号</div>
 						<Field class="hd-input mt-3" value="admin888" label="密码" name="password" placeholder=" 请输入登录密码" />
 						<ErrorMessage class="hd-error" name="password" />
