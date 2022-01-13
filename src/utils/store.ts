@@ -1,26 +1,28 @@
 interface IData {
-	expire?: number
-	token: string
-	[key: string]: any
+    [key: string]: any
 }
+
 export default {
-	set(key: string, IData: IData): void {
-		if (IData.expire) {
-			IData.expire = new Date().getTime() + IData.expire * 1000
-		}
-		localStorage.setItem(key, JSON.stringify(IData))
-	},
-	get(key: string): IData | null {
-		let item = localStorage.getItem(key)
-		if (item) {
-			const data = JSON.parse(item) as IData
-			const expire = data?.expire!
-			if (expire < new Date().getTime()) {
-				localStorage.removeItem(key)
-				return null
-			}
-			return data
-		}
-		return null
-	},
+    set(key: string, cache: IData, expire?: number): void {
+        if (expire) {
+            cache.expire = new Date().getTime() + expire * 1000
+        }
+        localStorage.setItem(key, JSON.stringify(cache))
+    },
+    get(key: string): IData | null {
+        let cache = localStorage.getItem(key)
+        if (cache) {
+            const data = JSON.parse(cache) as IData
+            const expire = data?.expire
+            if (expire < new Date().getTime()) {
+                localStorage.removeItem(key)
+                return null
+            }
+            return data
+        }
+        return null
+    },
+    remove(key: string) {
+        localStorage.removeItem(key)
+    }
 }

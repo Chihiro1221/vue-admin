@@ -7,13 +7,18 @@ export interface User {
 export interface LoginInterface {
 	token: string
 }
-class UserApi {
+
+export interface IFormDate {
+	account: string
+	password: string
+}
+export class UserApi {
 	info() {
 		return http.request<User>({
 			url: 'user/info',
 		})
 	}
-	login(data: any) {
+	login(data: IFormDate) {
 		return http.request<LoginInterface>({
 			url: `login`,
 			method: 'post',
