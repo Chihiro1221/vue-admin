@@ -1,3 +1,4 @@
+import { menuStore } from './../store/menuStore'
 import { RouteLocationNormalized, Router } from 'vue-router'
 import utils from '@/utils'
 import { userStore } from '@/store/userStore'

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { IMenu } from '#/menu'
+import router from '@/router'
 import { menuStore } from '@/store/menuStore'
 
 const menu = menuStore()
@@ -17,8 +18,10 @@ const changeMenu = (menu: IMenu, cmenu?: IMenu) => {
   menu.isActive = true
   if (cmenu) {
     cmenu.isActive = true
+    router.push({
+      name: cmenu!.route,
+    })
   }
-  // router.push(croute!)
 }
 </script>
 

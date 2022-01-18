@@ -1,5 +1,5 @@
 <script setup lang="ts"></script>
 
-<template>base...</template>
+<template><div>base</div></template>
 
 <style scoped lang="scss"></style>

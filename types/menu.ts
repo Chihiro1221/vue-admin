@@ -1,5 +1,5 @@
 interface Menu {
-  title: string
+  title?: string
   icon?: string
   isActive?: boolean
   route?: string

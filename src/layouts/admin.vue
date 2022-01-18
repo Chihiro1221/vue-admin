@@ -3,8 +3,12 @@ import menuComponent from './admin/menu.vue'
 import Navbar from '@/layouts/admin/navbar.vue'
 import HistoryLink from './admin/historyLink.vue'
 import { menuStore } from '@/store/menuStore'
+import { onBeforeRouteUpdate } from 'vue-router'
 const menu = menuStore()
 menu.init()
+onBeforeRouteUpdate(route => {
+  menuStore().addHistoryMenu(route)
+})
 </script>
 
 <template>
@@ -14,7 +18,11 @@ menu.init()
       <Navbar />
       <HistoryLink />
       <div class="p-5">
-        <router-view />
+        <router-view #default="{ Component }">
+          <transition appear enter-active-class="animate__animated">
+            <component :is="Component" />
+          </transition>
+        </router-view>
       </div>
     </div>
   </div>
