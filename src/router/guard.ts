@@ -14,7 +14,7 @@ class Guard {
   beforeEach(to: RouteLocationNormalized, from: RouteLocationNormalized) {
     if (!this.isAuthRoute(to)) return { name: 'login' }
     if (this.isGuestRoute(to)) return from
-    Guard.getUserInfo()
+    this.getUserInfo()
   }
 
   token(): string | undefined {
@@ -22,7 +22,7 @@ class Guard {
   }
 
   // 获取用户信息
-  static async getUserInfo() {
+  private async getUserInfo() {
     userStore().getUserInfo()
   }
 

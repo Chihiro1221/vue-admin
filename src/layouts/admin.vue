@@ -1,27 +1,30 @@
 <script setup lang="ts">
-import menuComponent from './admin/menu.vue'
+import MenuComponent from './admin/menu.vue'
 import Navbar from '@/layouts/admin/navbar.vue'
 import HistoryLink from './admin/historyLink.vue'
-import { menuStore } from '@/store/menuStore'
+import menuStore from '@/store/menuStore'
 import { onBeforeRouteUpdate } from 'vue-router'
+import menuService from '@/composables/menu'
 const menu = menuStore()
-menu.init()
+
 onBeforeRouteUpdate(route => {
-  menuStore().addHistoryMenu(route)
+  menuService.addHistoryMenu(route)
 })
 </script>
 
 <template>
   <div class="admin">
-    <menuComponent />
-    <div class="flex-1 bg-gray-100">
-      <Navbar />
-      <HistoryLink />
-      <div class="p-5">
+    <MenuComponent />
+    <div class="grid grid-rows-[auto_1fr] bg-gray-100">
+      <div>
+        <Navbar />
+        <HistoryLink />
+      </div>
+      <div class="p-3 relative overflow-y-auto">
         <router-view #default="{ Component }">
-          <transition appear enter-active-class="animate__animated">
-            <component :is="Component" />
-          </transition>
+          <Transition class="animate__animated" appear enter-active-class="animate__fadeInRight" leave-active-class="animate__fadeOutLeft">
+            <component :is="Component" class="absolute w-full" />
+          </Transition>
         </router-view>
       </div>
     </div>
@@ -30,7 +33,7 @@ onBeforeRouteUpdate(route => {
 
 <style scoped lang="scss">
 .admin {
-  @apply w-screen min-h-screen flex;
+  @apply w-screen min-h-screen grid grid-cols-[auto_1fr];
 }
 </style>
 

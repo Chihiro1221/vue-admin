@@ -5,12 +5,12 @@ import autoloadRoutes from './autoload'
 import guard from './guard'
 
 const router = createRouter({
-	history: createWebHistory(),
-	routes: [...routes, ...autoloadRoutes],
+  history: createWebHistory(),
+  routes: [...routes, ...autoloadRoutes],
 })
 
 export function setupRouter(app: App) {
-	app.use(router)
-	guard(router)
+  guard(router)
+  app.use(router)
 }
 export default router

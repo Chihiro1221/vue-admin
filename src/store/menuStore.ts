@@ -5,7 +5,7 @@ import router from '@/router'
 import utils from '@/utils'
 import { cacheEnum } from '@/enum/cacheEnum'
 
-export const menuStore = defineStore('menu', {
+export default defineStore('menu', {
   state: () => ({
     menus: [] as IMenu[],
     historyMenu: [] as IMenu[],

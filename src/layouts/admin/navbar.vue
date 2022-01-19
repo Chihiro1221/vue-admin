@@ -1,17 +1,24 @@
 <script setup lang="ts">
 import { userStore } from '@/store/userStore'
 import utils from '@/utils'
+import menuService from '@/composables/menu'
 
 const user = userStore()
 </script>
 
 <template>
-  <div class="bg-white py-2 px-5 flex justify-between items-center">
-    <el-breadcrumb separator="/">
-      <el-breadcrumb-item :to="{ path: '/' }">homepage</el-breadcrumb-item>
-      <el-breadcrumb-item>promotion list</el-breadcrumb-item>
-      <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
-    </el-breadcrumb>
+  <div class="bg-white py-2 px-3 flex justify-between items-center">
+    <div class="flex items-center">
+      <div class="mr-2 cursor-pointer" @click="menuService.toggleState()">
+        <i class="fas fa-angle-double-left text-violet-700" v-if="!menuService.close.value"></i>
+        <i class="fas fa-angle-double-right text-violet-700" v-else></i>
+      </div>
+      <el-breadcrumb separator="/">
+        <el-breadcrumb-item :to="{ path: '/' }">homepage</el-breadcrumb-item>
+        <el-breadcrumb-item>promotion list</el-breadcrumb-item>
+        <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
+      </el-breadcrumb>
+    </div>
     <div class="cursor-pointer relative group">
       <div class="flex items-center">
         <img :src="user.info?.avatar" class="w-8 h-8 rounded-full object-cover" />

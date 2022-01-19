@@ -22,6 +22,7 @@ export default {
       path: '500',
       name: 'error.500',
       component: () => import('@/views/errors/500.vue'),
+      meta: { menu: { title: '500 页面' } },
     },
   ],
 } as RouteRecordRaw
