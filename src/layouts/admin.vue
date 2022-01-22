@@ -2,12 +2,13 @@
 import MenuComponent from './admin/menu.vue'
 import Navbar from '@/layouts/admin/navbar.vue'
 import HistoryLink from './admin/historyLink.vue'
-import menuStore from '@/store/menuStore'
-import { onBeforeRouteUpdate } from 'vue-router'
+import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router'
 import menuService from '@/composables/menu'
-const menu = menuStore()
+import { watch } from 'vue'
 
-onBeforeRouteUpdate(route => {
+const route = useRoute()
+
+watch(route, (route: RouteLocationNormalizedLoaded) => {
   menuService.addHistoryMenu(route)
 })
 </script>
@@ -20,7 +21,7 @@ onBeforeRouteUpdate(route => {
         <Navbar />
         <HistoryLink />
       </div>
-      <div class="p-3 relative overflow-y-auto">
+      <div class="m-3 relative overflow-y-auto">
         <router-view #default="{ Component }">
           <Transition class="animate__animated" appear enter-active-class="animate__fadeInRight" leave-active-class="animate__fadeOutLeft">
             <component :is="Component" class="absolute w-full" />

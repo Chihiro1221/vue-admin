@@ -4,16 +4,37 @@ import router from '@/router'
 import utils from '@/utils'
 import { ref } from 'vue'
 import { IMenu } from './../../types/menu'
+import { useRoute } from 'vue-router'
 class Menu {
   public menus = ref<IMenu[]>([])
   public history = ref<IMenu[]>([])
-  public close = ref(true)
+  public close = ref(false)
+  private route!: RouteLocationNormalizedLoaded
   public init() {
     this.menus.value = this.getMenusByRoute()
     this.history.value = utils.store.get(cacheEnum.HISTORY_MENU) || []
+    this.route = useRoute()
+    this.findParent(this.route)
   }
   public toggleState() {
     this.close.value = !this.close.value
+    if (this.close.value) {
+      this.menus.value.forEach(m => {
+        m.isActive = false
+      })
+    } else {
+      this.findParent()
+    }
+  }
+  private findParent(route?: RouteLocationNormalizedLoaded) {
+    this.menus.value.forEach(m => {
+      m.children?.forEach(c => {
+        if (c.isActive || c.route === route?.name) {
+          m.isActive = true
+          c.isActive = true
+        }
+      })
+    })
   }
   public setCurrentMenu(route: RouteLocationNormalizedLoaded) {
     this.menus.value.forEach(m => {
@@ -21,7 +42,7 @@ class Menu {
       m.children?.forEach(c => {
         c.isActive = false
         if (c.route === route.name) {
-          m.isActive = true
+          if (!this.close.value) m.isActive = true
           c.isActive = true
         }
       })

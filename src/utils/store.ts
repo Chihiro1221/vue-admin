@@ -14,11 +14,12 @@ export default {
     if (cache) {
       const data = JSON.parse(cache) as IData
       const expire = data?.expire
-      if (expire < new Date().getTime()) {
+      if (expire && expire < new Date().getTime()) {
         localStorage.removeItem(key)
         return null
       }
       return data
+      console.log(data)
     }
     return null
   },
