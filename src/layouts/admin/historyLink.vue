@@ -13,7 +13,6 @@ menuService.init()
       :key="index"
       class="bg-white py-2 px-3 text-sm rounded-md shadow-sm hover:shadow-md hover:bg-violet-500 hover:text-white duration-300 border"
       :class="{ 'bg-violet-500 text-white': $route.name === menu.route }"
-      @click="menuService.close.value = false"
     >
       <router-link :to="{ name: menu.route }">{{ menu.title }}</router-link>
       <i

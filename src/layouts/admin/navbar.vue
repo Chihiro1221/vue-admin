@@ -2,8 +2,10 @@
 import { userStore } from '@/store/userStore'
 import utils from '@/utils'
 import menuService from '@/composables/menu'
-
 const user = userStore()
+const fullScreen = () => {
+  document.documentElement.requestFullscreen()
+}
 </script>
 
 <template>
@@ -19,25 +21,28 @@ const user = userStore()
         <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
-    <div class="cursor-pointer relative group">
-      <div class="flex items-center">
-        <img :src="user.info?.avatar" class="w-8 h-8 rounded-full object-cover" />
-        <span class="ml-1 text-sm">{{ user.info?.name }}</span>
+    <div class="flex items-center">
+      <i @click="fullScreen" class="fas fa-arrows-alt mr-2 cursor-pointer text-gray-600"></i>
+      <div class="relative group">
+        <div class="flex items-center cursor-pointer">
+          <img :src="user.info?.avatar" class="w-8 h-8 rounded-full object-cover" />
+          <span class="ml-1 text-sm">{{ user.info?.name }}</span>
+        </div>
+        <section class="group-hover:block absolute top-full bg-white p-3 right-0 rounded-md shadow-sm hidden z-50">
+          <div class="py-2 flex items-center border-b">
+            <i class="fas fa-file-word text-md"></i>
+            <a class="ml-1 text-gray-700 text-xs whitespace-nowrap">文档中心</a>
+          </div>
+          <div class="py-2 flex items-center">
+            <i class="fas fa-home text-md"></i>
+            <a class="ml-1 text-gray-700 text-xs whitespace-nowrap">网站首页</a>
+          </div>
+          <div class="py-2 flex items-center" @click="utils.user.logout()">
+            <i class="fas fa-sign-out-alt text-md"></i>
+            <a class="ml-1 text-gray-700 text-xs whitespace-nowrap">退出登录</a>
+          </div>
+        </section>
       </div>
-      <section class="group-hover:block absolute top-full bg-white p-3 right-0 rounded-md shadow-sm hidden">
-        <div class="py-2 flex items-center border-b">
-          <i class="fas fa-file-word text-lg"></i>
-          <a class="ml-1 text-gray-700 text-xs whitespace-nowrap">文档中心</a>
-        </div>
-        <div class="py-2 flex items-center">
-          <i class="fas fa-home text-lg"></i>
-          <a class="ml-1 text-gray-700 text-xs whitespace-nowrap">网站首页</a>
-        </div>
-        <div class="py-2 flex items-center" @click="utils.user.logout()">
-          <i class="fas fa-sign-out-alt text-lg"></i>
-          <a class="ml-1 text-gray-700 text-xs whitespace-nowrap">退出登录</a>
-        </div>
-      </section>
     </div>
   </div>
 </template>
