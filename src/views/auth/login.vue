@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import v from '@/plugins/validate'
-import { IFormDate } from '@/apis/userApi'
 import utils from '@/utils'
 
 const { Field, Form, ErrorMessage } = v

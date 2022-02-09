@@ -1,5 +1,5 @@
 .hd-input {
-  @apply border w-full rounded-sm px-2 py-1 border-gray-200 duration-300 focus:ring-violet-700 ring-offset-2 duration-300
+  @apply border border-gray-200 w-full rounded-sm  duration-300 px-2 text-sm py-2 ring-violet-600 focus:ring-4;
 }
 
 .hd-error {
@@ -7,7 +7,7 @@
 }
 
 .hd-button {
-  @apply bg-violet-700 text-white py-1 px-2 rounded-md hover:bg-violet-500 duration-300;
+  @apply bg-violet-700 text-white text-sm py-2 px-2 rounded-md hover:bg-violet-500 duration-300;
   &.danger {
     @apply bg-cyan-600 hover:bg-cyan-500;
   }

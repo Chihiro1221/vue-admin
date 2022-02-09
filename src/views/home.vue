@@ -2,7 +2,7 @@
 
 <template>
   <div class="home w-screen min-h-screen bg-gray-700 flex flex-col justify-start pt-[15%] items-center">
-    <img src="/images/1.jpg" class="w-40 h-40 rounded-full border-4 border-white object-cover" />
+    <img src="/images/1.jpg" class="w-32 h-32 rounded-full border-4 border-white object-cover" />
     <div class="mt-5">
       <router-link :to="{ path: '/admin/home' }" class="text-3xl !px-4 !py-2 hd-button drop-shadow-md"
         >后台管理</router-link
@@ -11,7 +11,7 @@
         >登录页面</router-link
       >
     </div>
-    <div class="text-gray-300 mt-5 font-mono text-xl drop-shadow-md text-center">
+    <div class="text-gray-300 mt-5 font-mono text-md drop-shadow-md text-center">
       尝试所有你未曾经历的事情，不论好坏。
     </div>
   </div>
