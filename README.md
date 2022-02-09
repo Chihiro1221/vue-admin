@@ -1,5 +1,9 @@
 # 前端脚手架项目
 
+[![maven](https://img.shields.io/badge/vue-3.2.25-brightgreen.svg)](https://github.com/vuejs/vue)
+[![maven](https://img.shields.io/badge/typescript-4.4.4-brightgreen.svg)](https://www.tslang.cn/index.html)
+[![maven](https://img.shields.io/badge/vite-2.7.2-brightgreen.svg)](https://www.vitejs.net/guide/#scaffolding-your-first-vite-project)
+
 欢迎克隆我的项目，这是一个基于 vue3+vite+TypeScript 开发的前端脚手架，使用了最新的前端技术栈
 
 ## 项目说明
@@ -74,4 +78,3 @@ yarn dev
 博客：https://langya11.icu
 
 其他项目：https://gitee.com/congee-and-tea-egg
-
