@@ -45,7 +45,7 @@ nextTick(() => {
 .notification {
   @apply relative;
   .lists {
-    @apply px-5 pt-2 pb-5 border rounded-md shadow-md absolute right-[-30px] z-10 bg-white w-[300px] text-sm;
+    @apply px-5 pt-2 pb-5 border rounded-md shadow-md absolute right-[-80px] md:right-[-30px] z-10 bg-white w-[300px] text-sm;
     a {
       @apply truncate block mt-2 border-b pb-1 hover:text-violet-700 duration-200;
     }

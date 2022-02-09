@@ -24,7 +24,7 @@ watch(
         <Navbar />
         <HistoryLink />
       </div>
-      <div class="m-3 relative overflow-y-auto">
+      <div class="m-3 relative md:overflow-y-auto">
         <router-view #default="{ Component }">
           <Transition
             class="animate__animated"
@@ -42,7 +42,7 @@ watch(
 
 <style scoped lang="scss">
 .admin {
-  @apply w-screen min-h-screen grid grid-cols-[auto_1fr];
+  @apply w-screen min-h-screen md:grid md:grid-cols-[auto_1fr];
 }
 </style>
 

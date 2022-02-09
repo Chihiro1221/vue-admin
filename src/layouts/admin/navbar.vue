@@ -17,7 +17,7 @@ const fullScreen = () => {
         <i class="fas fa-angle-double-left text-violet-700" v-if="!menuService.close.value"></i>
         <i class="fas fa-angle-double-right text-violet-700" v-else></i>
       </div>
-      <Breadcrumb />
+      <Breadcrumb class="hidden md:block" />
     </div>
     <div class="operator">
       <Notification class="mr-5" />

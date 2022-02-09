@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { nextTick, ref } from 'vue'
-import { echarts1 } from './echarts'
+import { echarts1, echarts2 } from './echarts'
 nextTick(() => {
   echarts.init(document.querySelector('#echarts1')!).setOption(echarts1)
-  echarts.init(document.querySelector('#echarts2')!).setOption(echarts1)
+  echarts.init(document.querySelector('#echarts2')!).setOption(echarts2 as any)
 })
 interface ICard {
   title: string
