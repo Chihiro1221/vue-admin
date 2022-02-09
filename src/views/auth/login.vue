@@ -8,7 +8,7 @@ const schema = v.yup.object({
   account: v.yup.string().required().email().label('账号'),
   password: v.yup.string().required().min(3).label('密码'),
 })
-const onSubmit = async (values: IFormDate) => {
+const onSubmit = (values: any) => {
   utils.user.login(values)
 }
 </script>
