@@ -1,4 +1,3 @@
-import { menuStore } from './../store/menuStore'
 import { RouteLocationNormalized, Router } from 'vue-router'
 import utils from '@/utils'
 import { userStore } from '@/store/userStore'
@@ -14,7 +13,6 @@ class Guard {
   beforeEach(to: RouteLocationNormalized, from: RouteLocationNormalized) {
     if (!this.isAuthRoute(to)) return { name: 'login' }
     if (this.isGuestRoute(to)) return from
-    this.getUserInfo()
   }
 
   token(): string | undefined {

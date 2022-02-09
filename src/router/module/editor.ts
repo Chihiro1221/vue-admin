@@ -1,8 +1,8 @@
 import { RouteRecordRaw } from 'vue-router'
 
 export default {
-  name: 'editor',
   path: '/editor',
+  name: 'editor',
   component: () => import('@/layouts/admin.vue'),
   meta: { auth: true, menu: { icon: 'far fa-edit', title: '编辑器' } },
   children: [
@@ -10,13 +10,13 @@ export default {
       name: 'markdown',
       path: 'markdown',
       component: () => import('@/views/editor/markdown.vue'),
-      meta: { menu: { title: 'markdown' } },
+      meta: { permission: 'markdown_editor', menu: { title: 'markdown' } },
     },
     {
       name: 'base',
       path: 'base',
       component: () => import('@/views/editor/base.vue'),
-      meta: { menu: { title: '富文本编辑器' } },
+      meta: { permission: 'base_editor', menu: { title: '富文本编辑器' } },
     },
   ],
 } as RouteRecordRaw

@@ -13,6 +13,7 @@ export default [
           name: '张三',
           age: 18,
           avatar: '/images/1.JPG',
+          permissions: ['markdown_editor', 'base_editor', 'error_404'],
         },
       }
     },

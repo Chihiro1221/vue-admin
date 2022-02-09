@@ -79,14 +79,14 @@ watch(
       dl {
         @apply text-white mt-5;
         dt {
-          @apply px-2 flex items-center justify-between cursor-pointer;
+          @apply px-4 flex items-center justify-between cursor-pointer;
           div {
             @apply flex items-center;
           }
         }
         dd {
           div {
-            @apply mt-3 py-2 mx-2 rounded-md pl-4  duration-300 cursor-pointer bg-gray-700 hover:bg-violet-500;
+            @apply mt-3 py-2 mx-4 rounded-md pl-4  duration-300 cursor-pointer bg-gray-700 hover:bg-violet-500;
             &.active {
               @apply bg-violet-700;
             }

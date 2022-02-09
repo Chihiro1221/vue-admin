@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import menuService from '@/composables/menu'
-menuService.init()
 </script>
 
 <template>

@@ -7,10 +7,13 @@ import menuService from '@/composables/menu'
 import { watch } from 'vue'
 
 const route = useRoute()
-
-watch(route, (route: RouteLocationNormalizedLoaded) => {
-  menuService.addHistoryMenu(route)
-})
+watch(
+  route,
+  (route: RouteLocationNormalizedLoaded) => {
+    menuService.addHistoryMenu(route)
+  },
+  { immediate: true }
+)
 </script>
 
 <template>
@@ -23,7 +26,12 @@ watch(route, (route: RouteLocationNormalizedLoaded) => {
       </div>
       <div class="m-3 relative overflow-y-auto">
         <router-view #default="{ Component }">
-          <Transition class="animate__animated" appear enter-active-class="animate__fadeInRight" leave-active-class="animate__fadeOutLeft">
+          <Transition
+            class="animate__animated"
+            appear
+            enter-active-class="animate__fadeInRight"
+            leave-active-class="animate__fadeOutLeft"
+          >
             <component :is="Component" class="absolute w-full" />
           </Transition>
         </router-view>
@@ -43,3 +51,12 @@ export default {
   route: { meta: { auth: true } },
 }
 </script>
+
+<style scoped lang="scss">
+.animate__fadeInRight {
+  animation-duration: 600ms;
+}
+.animate__fadeOutLeft {
+  animation-duration: 600ms;
+}
+</style>

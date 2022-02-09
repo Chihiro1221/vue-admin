@@ -19,7 +19,6 @@ export default {
         return null
       }
       return data
-      console.log(data)
     }
     return null
   },
