@@ -27,7 +27,7 @@ const fullScreen = () => {
           <img :src="user.info?.avatar" class="w-8 h-8 rounded-full object-cover" />
           <span class="ml-1 text-sm">{{ user.info?.name }}</span>
         </div>
-        <section class="group-hover:!block">
+        <section class="group-hover:!block relative">
           <div class="item">
             <i class="fas fa-file-word"></i>
             <a href="#">文档中心</a>

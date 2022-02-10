@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<Props>(), {
 const emit = defineEmits(['update:modelValue'])
 nextTick(() => {
   new wangEditor(
-    '#editor',
+    '#wangEditor',
     (newHtml: string) => {
       emit('update:modelValue', newHtml)
     },
@@ -27,11 +27,12 @@ nextTick(() => {
 </script>
 
 <template>
-  <div id="editor"></div>
+  <div id="wangEditor"></div>
 </template>
 
 <style scoped lang="scss">
-#editor {
+#wangEditor {
   z-index: 10 !important;
+  position: relative;
 }
 </style>

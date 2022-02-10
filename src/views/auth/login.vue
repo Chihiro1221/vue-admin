@@ -35,16 +35,16 @@ export default {
             <Field class="hd-input mt-3" value="admin888" label="密码" name="password" placeholder=" 请输入登录密码" />
             <ErrorMessage class="hd-error" name="password" />
           </div>
-          <hdButton class="mt-5 w-full" />
+          <FormHdButton class="mt-5 w-full" />
           <div class="mt-3 flex justify-center items-center">
             <i class="fab fa-weixin bg-green-600 text-white p-1 rounded-full box-border cursor-pointer"></i>
           </div>
         </div>
         <div class="flex mt-6 text-xs text-gray-700 justify-center gap-2">
-          <hdLink />
-          <hdLink />
-          <hdLink />
-          <hdLink />
+          <FormHdLink />
+          <FormHdLink />
+          <FormHdLink />
+          <FormHdLink />
         </div>
       </div>
       <div class="hidden md:block relative">

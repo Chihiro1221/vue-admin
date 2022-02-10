@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { IMenu } from '#/menu'
 import menuService from '@/composables/menu'
-import router from '@/router'
 import { watch } from 'vue'
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router'
 const route = useRoute()
@@ -38,7 +36,7 @@ watch(
   <div class="menu-container" :class="{ close: menuService.close.value }">
     <div class="menu">
       <div class="logo">
-        <i class="fab fa-angular text-[40px] mr-2 mt-2"></i>
+        <i class="fab fa-asymmetrik text-[40px] mr-2 mt-2"></i>
         <span class="text-lg"></span>
       </div>
       <div class="container">
