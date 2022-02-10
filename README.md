@@ -18,11 +18,16 @@
 - [Pinia (状态管理)](https://pinia.vuejs.org/)
 - [Axios](https://www.axios-http.cn/docs/intro)
 - [Mock（假数据）](http://mockjs.com/)
+- [Vite-plugin-mock（自动开启 mock）](https://github.com/vbenjs/vite-plugin-mock/blob/HEAD/README.zh_CN.md)
 - [lodash](https://www.lodashjs.com/)
 - [echarts](https://echarts.apache.org/zh/index.html)
 - [veeValidate（表单）](https://vee-validate.logaretm.com/v4/)
 - [yup (表单规则验证)](https://github.com/jquense/yup)
-- [toast-editor](https://ui.toast.com/tui-editor)
+- [toast-editor（markdown 编辑器）](https://ui.toast.com/tui-editor)
+- [wangEditor（富文本编辑器）](https://www.wangeditor.com/)
+- [unplugins-auto-import（自动导入 api）](https://doc.houdunren.com/vue/5%20%E6%8F%92%E4%BB%B6%E6%89%A9%E5%B1%95.html#%E8%87%AA%E5%8A%A8%E5%BC%95%E5%85%A5api)
+- [unplugin-vue-components（自动导入组件）](https://doc.houdunren.com/vue/5%20%E6%8F%92%E4%BB%B6%E6%89%A9%E5%B1%95.html#%E8%87%AA%E5%8A%A8%E5%8A%A0%E8%BD%BD%E7%BB%84%E4%BB%B6)
+- [gsap（操作样式动画）](https://github.com/greensock/GSAP)
 
 ## 安装项目
 
@@ -38,6 +43,7 @@ yarn dev
 
 ## 功能实现
 
+- 全局变量（.env）
 - 登录功能
 - 登录校验（token）
 - 游客验证
@@ -48,13 +54,16 @@ yarn dev
 - 面包屑
 - markdown 编辑器（toast-editor）
 - 后端权限校验
-- 全局变量（.env）
+- 自动按需导入组件（element）
+- 自动导入 api（vue composition）
+- 列表动画组件
 
 ## 打包优化
 
-- [包大小可视化](https://github.com/btd/rollup-plugin-visualizer)
-- [element 自动按需导入](https://element-plus.gitee.io/zh-CN/guide/quickstart.html#%E6%8C%89%E9%9C%80%E5%AF%BC%E5%85%A5)
+- 组件按需导入
+- api 自动导入
 - 其他资源采用 cdn（echarts...）
+- [包大小可视化](https://github.com/btd/rollup-plugin-visualizer)
 - [分块打包](https://doc.houdunren.com/vue/4%20%E4%BC%98%E5%8C%96%E6%89%93%E5%8C%85.html#%E5%88%86%E5%9D%97%E6%89%93%E5%8C%85)
 
 ## 项目效果
