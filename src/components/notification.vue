@@ -43,7 +43,7 @@ nextTick(() => {
 
 <style scoped lang="scss">
 .notification {
-  @apply relative;
+  @apply relative z-50;
   .lists {
     @apply px-5 pt-2 pb-5 border rounded-md shadow-md absolute right-[-80px] md:right-[-30px] z-10 bg-white w-[300px] text-sm;
     a {

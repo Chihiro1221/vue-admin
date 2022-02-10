@@ -118,7 +118,8 @@ watch(
                 display: block !important;
                 @apply absolute top-0 left-full bg-gray-600 z-50 w-[200px] duration-300;
                 div {
-                  @apply m-0;
+                  z-index: 999 !important;
+                  @apply m-0 relative rounded-none;
                 }
               }
             }
