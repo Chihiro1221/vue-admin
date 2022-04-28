@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from 'vue-router'
-
+import markdown from '@/views/editor/markdown.vue'
 export default {
   path: '/editor',
   name: 'editor',

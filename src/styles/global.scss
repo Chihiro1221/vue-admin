@@ -1,5 +1,5 @@
 .hd-input {
-  @apply border border-gray-200 w-full rounded-sm  duration-300 px-2 text-sm py-2 ring-violet-600 focus:ring-4;
+  @apply border w-full rounded-sm py-1 px-2 text-sm outline-none border-gray-200 placeholder:text-xs focus:outline-2 focus:outline-violet-600 focus:border-white  duration-300;
 }
 
 .hd-error {

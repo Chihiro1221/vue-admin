@@ -7,14 +7,13 @@ import { IMenu } from '#/menu'
 class Menu {
   public menus = ref<IMenu[]>([])
   public history = ref<IMenu[]>([])
-  public close = ref(true)
+  public close = ref(false)
   public currentRoute = ref<null | RouteLocationNormalizedLoaded>(null)
 
   // 初始化
   public init() {
     this.menus.value = this.getMenusByRoute()
     this.history.value = this.getHistoryMenu()
-
     this.findParent()
   }
 

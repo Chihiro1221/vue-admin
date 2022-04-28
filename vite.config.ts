@@ -26,5 +26,15 @@ export default ({ command, mode }: ConfigEnv) => {
         },
       },
     },
+    server:{
+      proxy:{
+        '/api':{
+          target:env.VITE_BASE_URL,
+          // 携带coo
+          changeOrigin:true,
+          rewrite:(path:string) => path.replace(/^\/api/, '')
+        }
+      }
+    }
   }
 }

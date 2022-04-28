@@ -10,8 +10,7 @@ async function bootstrap() {
   setupRouter(app)
   // 等待路由加载完毕之后再去挂载组件
   await router.isReady()
-
   app.mount('#app')
 }
 
-bootstrap()
+void bootstrap()

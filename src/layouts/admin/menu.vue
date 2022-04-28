@@ -1,35 +1,16 @@
 <script setup lang="ts">
-import menuService from '@/composables/menu'
-import { watch } from 'vue'
-import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router'
-const route = useRoute()
+import menuService from '@/composables/menu';
+import { watch } from 'vue';
+import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
+const route = useRoute();
 
 watch(
   route,
   (route: RouteLocationNormalizedLoaded) => {
-    menuService.setCurrentMenu(route)
+    menuService.setCurrentMenu(route);
   },
   { immediate: true }
-)
-// const reset = () => {
-//   menuService.menus.value.forEach(menu => {
-//     menu.isActive = false
-//     menu.children?.forEach(cmenu => {
-//       cmenu.isActive = false
-//     })
-//   })
-// }
-
-// const changeMenu = (menu: IMenu, cmenu?: IMenu) => {
-//   reset()
-//   menu.isActive = true
-//   if (cmenu) {
-//     cmenu.isActive = true
-//     router.push({
-//       name: cmenu!.route,
-//     })
-//   }
-// }
+);
 </script>
 
 <template>
@@ -73,7 +54,7 @@ watch(
       @apply text-white flex items-center justify-center;
     }
     .container {
-      @apply mt-5;
+      @apply mt-5 text-[14px];
       dl {
         @apply text-white mt-5;
         dt {

@@ -6,7 +6,7 @@ export const userStore = defineStore('userStore', {
   }),
   actions: {
     async getUserInfo() {
-      this.info = await (await userApi.info()).result
+      this.info = await (await userApi.info()).data
     },
   },
 })

@@ -7,8 +7,8 @@ export default [
       return {
         code: 200,
         message: '上传图片成功',
-        type: 'success',
-        result: {
+        status: 'success',
+        data: {
           url: '/images/1.JPG',
         },
       }

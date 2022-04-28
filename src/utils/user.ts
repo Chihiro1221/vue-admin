@@ -5,16 +5,20 @@ import userApi, {IFormDate} from "@/apis/userApi";
 import utils from "@/utils/index";
 import {userStore} from "@/store/userStore";
 
+export function isLogin() {
+  return Boolean(utils.store.get(cacheEnum.TOKEN_NAME));
+}
 
 export async function login(values: IFormDate) {
-    const {result: {token}} = await userApi.login(values)
-    utils.store.set(cacheEnum.TOKEN_NAME, {token})
-    const routeName = utils.store.get(cacheEnum.REDIRECT_ROUTE_NAME)?.route_name ?? 'home'
-    router.push({name: routeName})
+  const {data: {token}} = await userApi.login(values)
+  utils.store.set(cacheEnum.TOKEN_NAME, {token})
+  await userStore().getUserInfo()
+  const routeName = utils.store.get(cacheEnum.REDIRECT_ROUTE_NAME)?.route_name ?? 'home'
+  await router.push({name: routeName})
 }
 
 export function logout() {
-    store.remove(cacheEnum.TOKEN_NAME)
-    router.push('/')
-    userStore().info = null
+  store.remove(cacheEnum.TOKEN_NAME)
+  void router.push('/')
+  userStore().info = null
 }
