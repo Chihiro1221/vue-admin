@@ -13,9 +13,11 @@ const fullScreen = () => {
 <template>
   <div class="navbar">
     <div class="flex items-center">
-      <div class="mr-2 cursor-pointer" @click="menuService.toggleState()">
-        <i class="fas fa-angle-double-left text-violet-700" v-if="!menuService.close.value"></i>
-        <i class="fas fa-angle-double-right text-violet-700" v-else></i>
+      <div class="mr-2 cursor-pointer flex items-center" @click="menuService.toggleState()">
+<!--        <i class="fas fa-angle-double-left text-violet-700" v-if="!menuService.close.value"></i>-->
+<!--        <i class="fas fa-angle-double-right text-violet-700" v-else></i>-->
+        <icon-menu-fold theme="outline" size="24" v-if="!menuService.close.value" fill="#489f80"/>
+        <icon-menu-fold-one v-else theme="outline" size="24" fill="#489f80"/>
       </div>
       <Breadcrumb class="hidden md:block" />
     </div>

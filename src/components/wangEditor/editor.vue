@@ -1,38 +1,61 @@
-<script setup lang="ts">
-import { nextTick } from 'process'
-import wangEditor from './wangEditor'
+<script lang="ts" setup>
+import '@wangeditor/editor/dist/css/style.css' // 引入 css
+import {onBeforeUnmount, ref, shallowRef, onMounted} from 'vue'
+import {Editor, Toolbar} from '@wangeditor/editor-for-vue'
+import {apiEnum} from "@/enum/apiEnum";
 
-export interface Props {
-  height?: number
+interface IProps {
   modelValue?: string
-  uploadImgServer?: string
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  height: 500,
+const props = withDefaults(defineProps<IProps>(), {
   modelValue: '',
-  uploadImgServer: '/api/upload/image',
 })
-
 const emit = defineEmits(['update:modelValue'])
-nextTick(() => {
-  new wangEditor(
-    '#wangEditor',
-    (newHtml: string) => {
-      emit('update:modelValue', newHtml)
-    },
-    props
-  )
-})
-</script>
+// 编辑器实例，必须用 shallowRef
+const editorRef = shallowRef()
+const mode = ref('default')
+// 内容 HTML
+const valueHtml = ref(props.modelValue)
 
-<template>
-  <div id="wangEditor"></div>
-</template>
-
-<style scoped lang="scss">
-#wangEditor {
-  z-index: 10 !important;
-  position: relative;
+const toolbarConfig = {}
+const editorConfig = {
+  placeholder: '请输入内容...', MENU_CONF: {
+    uploadImage: {
+      server: apiEnum.UPLOAD_IMG_URL,
+    }
+  }
 }
-</style>
+
+// 组件销毁时，也及时销毁编辑器
+onBeforeUnmount(() => {
+  const editor = editorRef.value
+  if (editor == null) return
+  editor.destroy()
+})
+
+const handleCreated = (editor: any) => {
+  editorRef.value = editor // 记录 editor 实例，重要！
+}
+const handleChange = () => {
+  emit('update:modelValue', valueHtml.value)
+}
+</script>
+<template>
+  <div style="border: 1px solid #ccc">
+    <Toolbar
+        style="border-bottom: 1px solid #ccc"
+        :editor="editorRef"
+        :defaultConfig="toolbarConfig"
+        :mode="mode"
+    />
+    <Editor
+        style="height: 500px; overflow-y: hidden;"
+        v-model="valueHtml"
+        :defaultConfig="editorConfig"
+        :mode="mode"
+        @onCreated="handleCreated"
+        @onChange="handleChange"
+    />
+  </div>
+</template>

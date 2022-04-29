@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Editor from '@/components/wangEditor/editor.vue'
 import { ref } from 'vue'
-const content = ref('basic')
+const content = ref('<p>hello World</p>')
 </script>
 
 <template>

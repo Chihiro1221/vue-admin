@@ -10,7 +10,7 @@ import {isLogin} from "@/utils/user";
       >后台管理
       </router-link
       >
-      <router-link v-if="!isLogin" :to="{ path: '/login' }"
+      <router-link v-if="!isLogin()" :to="{ path: '/login' }"
                    class="text-3xl !px-4 !py-2 hd-button danger ml-3 drop-shadow-md"
       >登录页面
       </router-link

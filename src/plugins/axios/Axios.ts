@@ -1,7 +1,12 @@
-import axios, { AxiosRequestConfig } from 'axios'
+import axios, {AxiosRequestConfig} from 'axios'
+import utils from "@/utils";
+import {cacheEnum} from "@/enum/cacheEnum";
+import router from "@/router";
+import errorStore from "@/store/errorStore";
 
 export default class Axios {
   private instance
+
   constructor(config: AxiosRequestConfig) {
     this.instance = axios.create(config)
     this.interceptors()
@@ -17,6 +22,7 @@ export default class Axios {
       }
     }) as Promise<D>
   }
+
   private interceptors() {
     this.requestInterceptor()
     this.responseInterceptor()
@@ -24,22 +30,36 @@ export default class Axios {
 
   private requestInterceptor() {
     this.instance.interceptors.request.use(
-      config => {
-        return config
-      },
-      error => {
-        return Promise.reject(error)
-      }
+        config => {
+          config.headers = {
+            Authorization: `Bearer ${utils.store.get(cacheEnum.TOKEN_NAME).token}`,
+          }
+          return config
+        },
+        error => {
+          return Promise.reject(error)
+        }
     )
   }
+
   private responseInterceptor() {
     this.instance.interceptors.response.use(
-      response => {
-        return response
-      },
-      error => {
-        return Promise.reject(error)
-      }
+        response => {
+          return response
+        },
+        error => {
+          switch (error.response.code) {
+            case 401:
+              utils.store.remove(cacheEnum.TOKEN_NAME)
+              void router.push({name: "login"})
+              break;
+              // 后台表单验证失败
+            case 422:
+              errorStore().errors = {}
+              break;
+          }
+          return Promise.reject(error)
+        }
     )
   }
 }
