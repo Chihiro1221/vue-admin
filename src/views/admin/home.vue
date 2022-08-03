@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import {nextTick, ref} from 'vue'
-import {echarts1, echarts2} from './echarts'
+import { nextTick, ref } from 'vue';
+import { echarts1, echarts2 } from './echarts';
 
 nextTick(() => {
-  echarts.init(document.querySelector<HTMLDivElement>('#echarts1')!).setOption(echarts1)
-  echarts.init(document.querySelector<HTMLDivElement>('#echarts2')!).setOption(echarts2 as any)
-})
+  echarts.init(document.querySelector<HTMLDivElement>('#echarts1')!).setOption(echarts1);
+  echarts.init(document.querySelector<HTMLDivElement>('#echarts2')!).setOption(echarts2 as any);
+});
 
 interface ICard {
-  title: string
-  price: number
-  icon: string
-  iconColor: string
-  totalTitle: string
-  total: number
+  title: string;
+  price: number;
+  icon: string;
+  iconColor: string;
+  totalTitle: string;
+  total: number;
 }
 
 const cards = ref<ICard[]>([
@@ -49,19 +49,13 @@ const cards = ref<ICard[]>([
     totalTitle: '总评论数',
     total: 6589022,
   },
-])
+]);
 </script>
 
 <template>
   <div>
     <div class="md:grid grid-cols-4 gap-3">
-      <el-card
-          shadow="hover"
-          :body-style="{ padding: '20px' }"
-          v-for="(card, index) in cards"
-          :key="index"
-          class="mb-2"
-      >
+      <el-card shadow="hover" :body-style="{ padding: '20px' }" v-for="(card, index) in cards" :key="index" class="mb-2">
         <template #header>
           <div class="flex items-center justify-between">
             <span class="text-gray-700">{{ card.title }}</span>
@@ -95,5 +89,4 @@ const cards = ref<ICard[]>([
   </div>
 </template>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

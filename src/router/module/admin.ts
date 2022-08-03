@@ -1,6 +1,7 @@
-import { RouteRecordRaw } from 'vue-router'
+import { RouteRecordRaw } from 'vue-router';
 export default {
   path: '/admin',
+  redirect: { name: 'admin.home' },
   component: () => import('@/layouts/admin.vue'),
   meta: { auth: true, menu: { icon: 'fas fa-home', title: 'Dashboard' } },
   children: [
@@ -11,4 +12,4 @@ export default {
       meta: { auth: true, menu: { title: '工作台' } },
     },
   ],
-} as RouteRecordRaw
+} as RouteRecordRaw;

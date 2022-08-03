@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import menuService from '@/composables/menu';
-import {watch} from 'vue';
-import {RouteLocationNormalizedLoaded, useRoute} from 'vue-router';
+import { watch } from 'vue';
+import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router';
 
 const route = useRoute();
 
 watch(
-    route,
-    (route: RouteLocationNormalizedLoaded) => {
-      menuService.setCurrentMenu(route);
-    },
-    {immediate: true}
+  route,
+  (route: RouteLocationNormalizedLoaded) => {
+    menuService.setCurrentMenu(route);
+  },
+  { immediate: true }
 );
 </script>
 
@@ -32,10 +32,10 @@ watch(
           </dt>
           <dd v-show="menu.isActive">
             <div
-                @click="$router.push({ name: cmenu.route })"
-                :class="{ active: cmenu.isActive && !menuService.close.value }"
-                v-for="(cmenu, key) of menu.children"
-                :key="key"
+              @click="$router.push({ name: cmenu.route })"
+              :class="{ active: cmenu.isActive && !menuService.close.value }"
+              v-for="(cmenu, key) of menu.children"
+              :key="key"
             >
               {{ cmenu?.title }}
             </div>

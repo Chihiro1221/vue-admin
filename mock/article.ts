@@ -1,5 +1,5 @@
-import { Random } from 'mockjs'
-import { MockMethod } from 'vite-plugin-mock'
+import { Random } from 'mockjs';
+import { MockMethod } from 'vite-plugin-mock';
 export default [
   {
     url: '/api/article',
@@ -14,9 +14,9 @@ export default [
             id: index,
             title: Random.ctitle(),
             content: Random.cparagraph(),
-          }
+          };
         }),
-      }
+      };
     },
   },
-] as MockMethod[]
+] as MockMethod[];

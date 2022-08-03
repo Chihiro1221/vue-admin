@@ -1,5 +1,5 @@
-import Axios from './Axios'
+import Axios from './Axios';
 
-const http = new Axios({ baseURL: '/api', timeout: 5000 })
+const http = new Axios({ baseURL: '/api', timeout: 10000 });
 
-export { http }
+export { http };

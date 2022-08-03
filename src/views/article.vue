@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import articleApi from '@/apis/articleApi'
-const articles = ref()
-articleApi.getArticles().then(({ result }) => (articles.value = result))
+import articleApi from '@/apis/articleApi';
+const articles = ref();
+articleApi.getArticles().then(({ data }) => (articles.value = data));
 
 const remove = (index: number) => {
-  articles.value.splice(index, 1)
-}
+  articles.value.splice(index, 1);
+};
 </script>
 
 <template>

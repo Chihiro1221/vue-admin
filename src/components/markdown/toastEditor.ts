@@ -1,9 +1,9 @@
-import uploadImageApi from '@/apis/uploadImageApi'
+import uploadImageApi from '@/apis/uploadImageApi';
 export default class {
-  public editor
-  private editorEl: HTMLDivElement
+  public editor;
+  private editorEl: HTMLDivElement;
   constructor(el: string, height: string, content: string) {
-    this.editorEl = document.querySelector(el)!
+    this.editorEl = document.querySelector(el)!;
     this.editor = new toastui.Editor({
       el: this.editorEl,
       initialEditType: 'markdown',
@@ -11,9 +11,9 @@ export default class {
       height: height,
       initialValue: content,
       toolbarItems: this.toolbar(),
-    })
+    });
 
-    this.UploadImageHook()
+    this.UploadImageHook();
   }
 
   private toolbar() {
@@ -30,36 +30,36 @@ export default class {
           tooltip: 'fullScreen',
         },
       ],
-    ]
+    ];
   }
 
   private fullScreen() {
-    const button = document.createElement('button')
-    button.innerHTML = '全屏'
-    button.style.margin = '0'
+    const button = document.createElement('button');
+    button.innerHTML = '全屏';
+    button.style.margin = '0';
 
     button.addEventListener('click', () => {
-      this.editorEl?.classList.toggle('fullscreen')
-      this.editor.focus()
-    })
+      this.editorEl?.classList.toggle('fullscreen');
+      this.editor.focus();
+    });
     document.documentElement.addEventListener('keyup', (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        this.editorEl.classList.remove('fullscreen')
+        this.editorEl.classList.remove('fullscreen');
       }
-    })
-    return button
+    });
+    return button;
   }
 
   private UploadImageHook() {
     // 移除上传钩子
-    this.editor.removeHook('addImageBlobHook')
+    this.editor.removeHook('addImageBlobHook');
     // 重写
     this.editor.addHook('addImageBlobHook', async (blob: any, callback: Function) => {
-      const form = new FormData()
-      form.append('file', blob, blob.name)
-      const response = await uploadImageApi.upload(form)
+      const form = new FormData();
+      form.append('file', blob, blob.name);
+      const response = await uploadImageApi.upload(form);
 
-      callback(response.result.url, blob.name)
-    })
+      callback(response.data.url, blob.name);
+    });
   }
 }
