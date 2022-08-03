@@ -1,5 +1,5 @@
-import { Random } from 'mockjs'
-import { MockMethod } from 'vite-plugin-mock'
+import { Random } from 'mockjs';
+import { MockMethod } from 'vite-plugin-mock';
 export default [
   {
     url: '/api/user/info',
@@ -12,10 +12,10 @@ export default [
         data: {
           name: '张三',
           age: 18,
-          avatar: '/images/1.JPG',
+          avatar: '/images/1.jpg',
           permissions: ['markdown_editor', 'base_editor', 'error_404'],
         },
-      }
+      };
     },
   },
   {
@@ -29,7 +29,7 @@ export default [
         data: {
           token: Random.string(10),
         },
-      }
+      };
     },
   },
-] as MockMethod[]
+] as MockMethod[];

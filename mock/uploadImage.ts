@@ -1,4 +1,4 @@
-import { MockMethod } from 'vite-plugin-mock'
+import { MockMethod } from 'vite-plugin-mock';
 export default [
   {
     url: '/api/upload/image',
@@ -7,12 +7,12 @@ export default [
       return {
         code: 200,
         message: '上传图片成功',
-        errno:0,
+        errno: 0,
         status: 'success',
         data: {
-          url: '/images/1.JPG',
+          url: '/images/1.jpg',
         },
-      }
+      };
     },
   },
-] as MockMethod[]
+] as MockMethod[];
