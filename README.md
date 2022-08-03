@@ -82,8 +82,12 @@ yarn dev
 
 ## 在线预览
 
-如果想查看更多优质的项目或查看在线预览地址可以前往我的博客地址
+线上开启了`mockjs`模拟数据
 
-博客：https://langya11.icu
+预览：https://admin.langya11.icu
 
-其他项目：https://gitee.com/congee-and-tea-egg
+欢迎来到我的博客论坛，支持自己发表文档，如果自己有博客的情况下也可以申请友情链接哦。
+
+博客：https://chihiross.com
+
+其他项目：https://github.com/Chihiro1221
