@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import menuService from '@/composables/menu'
+import menuService from '@/composables/menu';
 </script>
 
 <template>
@@ -11,7 +11,7 @@ import menuService from '@/composables/menu'
       v-for="(menu, index) of menuService.history.value"
       :key="index"
       class="bg-white py-2 px-3 text-sm rounded-md shadow-sm hover:shadow-md hover:bg-violet-500 hover:text-white duration-300 border"
-      :class="{ 'bg-violet-500 text-white': $route.name === menu.route }"
+      :class="{ 'bg-violet-600 text-white': $route.name === menu.route }"
     >
       <router-link :to="{ name: menu.route }">{{ menu.title }}</router-link>
       <i

@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { nextTick } from 'process'
-import { ref } from 'vue-demi'
-const activeName = ref('system')
-const isShow = ref(false)
+import { nextTick } from 'vue';
+import { ref } from 'vue';
+const activeName = ref('system');
+const isShow = ref(false);
 nextTick(() => {
   document.documentElement.addEventListener('click', () => {
-    isShow.value = false
-  })
-})
+    isShow.value = false;
+  });
+});
 </script>
 
 <template>
@@ -17,22 +17,19 @@ nextTick(() => {
       <el-tabs v-model="activeName" class="demo-tabs">
         <el-tab-pane label="系统消息" name="system">
           <a href="#"
-            >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit dolor nisi, dolores ipsam cum eius debitis,
-            nihil dicta harum placeat necessitatibus quae, deleniti quia eaque architecto id aut magnam natus. Incidunt
-            cumque ullam cum vitae culpa qui veritatis expedita, explicabo quo rem sunt enim nobis totam ratione
-            doloribus magni? Non?</a
+            >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit dolor nisi, dolores ipsam cum eius debitis, nihil dicta harum placeat
+            necessitatibus quae, deleniti quia eaque architecto id aut magnam natus. Incidunt cumque ullam cum vitae culpa qui veritatis expedita,
+            explicabo quo rem sunt enim nobis totam ratione doloribus magni? Non?</a
           >
           <a href="#"
-            >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit dolor nisi, dolores ipsam cum eius debitis,
-            nihil dicta harum placeat necessitatibus quae, deleniti quia eaque architecto id aut magnam natus. Incidunt
-            cumque ullam cum vitae culpa qui veritatis expedita, explicabo quo rem sunt enim nobis totam ratione
-            doloribus magni? Non?</a
+            >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit dolor nisi, dolores ipsam cum eius debitis, nihil dicta harum placeat
+            necessitatibus quae, deleniti quia eaque architecto id aut magnam natus. Incidunt cumque ullam cum vitae culpa qui veritatis expedita,
+            explicabo quo rem sunt enim nobis totam ratione doloribus magni? Non?</a
           >
           <a href="#"
-            >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit dolor nisi, dolores ipsam cum eius debitis,
-            nihil dicta harum placeat necessitatibus quae, deleniti quia eaque architecto id aut magnam natus. Incidunt
-            cumque ullam cum vitae culpa qui veritatis expedita, explicabo quo rem sunt enim nobis totam ratione
-            doloribus magni? Non?</a
+            >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit dolor nisi, dolores ipsam cum eius debitis, nihil dicta harum placeat
+            necessitatibus quae, deleniti quia eaque architecto id aut magnam natus. Incidunt cumque ullam cum vitae culpa qui veritatis expedita,
+            explicabo quo rem sunt enim nobis totam ratione doloribus magni? Non?</a
           >
         </el-tab-pane>
         <el-tab-pane label="站内消息" name="message">Config</el-tab-pane>
